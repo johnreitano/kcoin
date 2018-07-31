@@ -19,7 +19,6 @@ import PersonIcon from "@material-ui/icons/Person";
 // Component Related Imports
 import styles from "./styles";
 import logoUrl from "../../images/kwallet.svg";
-import darkLogoUrl from "../../images/kwallet-dark.svg";
 import { deleteLocalAccount, logout } from "../../modules/edge";
 
 class Header extends React.Component {
@@ -163,7 +162,6 @@ class Header extends React.Component {
 									>
 										<div style={{ flex:2 }}>
 											<img
-												src={darkLogoUrl}
 												alt="kWallet"
 												className={classes.menuLogo}
 											/>

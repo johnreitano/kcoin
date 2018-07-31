@@ -46,11 +46,6 @@ function TransactionList( { classes, loading, transactions, toggleTransactionDet
 							<ListIcon />
 						</Avatar>
 					}
-					action={
-						<IconButton disabled>
-							<MoreVertIcon />
-						</IconButton>
-					}
 					title={
 						<Typography variant="subheading">
 							Transactions

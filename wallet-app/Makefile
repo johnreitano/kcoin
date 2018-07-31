@@ -1,57 +1,66 @@
-IMAGE_NAME     					:= kowala-app-web
-CUCUMBER_IMAGE_NAME     := kowala-app-web-tests
+DOCKER_NAME = kowala-app-web
 
 install:
-	@yarn install
+	@npm install
 
-build: install
-	KOWALA_NETWORK="kusd-zygote" yarn run build
+build:
+	@npm run build
+
+serve:
+	@npm run start:server
+
+watch:
+	@npm run start
 
 test:
-	@yarn run test
+	@npm run test
+	@cucumber --tags 'not @ignore'
 
 lint:
-	@yarn run lint
-
-start:
-	KOWALA_NETWORK="kusd-zygote" yarn run start
+	@npm run lint
 
 storybook:
-	@yarn run storybook
-
-build-storybook:
-	@yarn run storybook
+	@npm run storybook
 
 clean:
 	@rm -rf node_modules/
 	@rm -rf dist/
 	@rm -rf coverage/
 
-cucumber-test:
-	@cucumber --tags 'not @ignore'
+start: docker-install docker-start
 
-test-e2e:
-	@docker-compose exec $(CUCUMBER_IMAGE_NAME) make cucumber-test
+docker-install: .docker-started
+	@docker-compose exec $(DOCKER_NAME) make install
 
-.started:
-	@docker-compose build
-	@docker-compose up -d
-	@touch .started
-	@echo "Docker containers are now running."
+docker-start: .docker-started
+	@docker-compose exec $(DOCKER_NAME) make serve
 
-start-docker-images: .started
+docker-build: .docker-started
+	@docker-compose exec $(DOCKER_NAME) make build
 
-# Alias for watch
-serve: watch
+docker-test: .docker-started
+	@docker-compose exec $(DOCKER_NAME) make test
 
-# Start the website on port 3000
-watch: .started
-	@docker-compose exec $(IMAGE_NAME) make install
-	@docker-compose exec $(IMAGE_NAME) npm run start:server
+docker-storybook: .docker-started
+	@docker-compose exec $(DOCKER_NAME) make storybook
 
-stop:
+docker-bash: .docker-started
+	@docker-compose exec $(DOCKER_NAME) /bin/bash
+
+docker-stop:
+	@docker-compose stop
+	@docker-compose down
+	@rm .docker-started
+
+docker-clean:
 	@docker-compose kill
 	@docker-compose stop
 	@docker-compose down
 	@docker-compose rm -f
-	-@rm .started
+	@rm .docker-started
+
+.docker-started:
+	@docker-compose build
+	@docker-compose up -d
+	@touch .docker-started
+	@echo "Docker containers are now running."

@@ -41,9 +41,8 @@ class WalletContainer extends React.Component {
 						)}
 					/>
 				</main>
-				{ wallet.balance > 0 && (
+				{ false && wallet.balance > 0 && (
 					<Fab
-						color="primary"
 						onClick={() => {openModal("SEND_MODAL");}}
 						icon={<SendIcon />}
 					/>
