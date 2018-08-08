@@ -1,26 +1,26 @@
 DOCKER_NAME = kowala-app-web
 
 install:
-	@npm install
+	@yarn install
 
 build:
-	@npm run build
+	@yarn run build
 
 serve:
-	@npm run start:server
+	@yarn run start:server
 
 watch:
-	@npm run start
+	@yarn run start
 
 test:
-	@npm run test
+	@yarn run test
 	@cucumber --tags 'not @ignore'
 
 lint:
-	@npm run lint
+	@yarn run lint
 
 storybook:
-	@npm run storybook
+	@yarn run storybook
 
 clean:
 	@rm -rf node_modules/
