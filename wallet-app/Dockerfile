@@ -48,7 +48,10 @@ RUN NODE_VERSION=$(curl -SL "https://nodejs.org/dist/index.tab" \
   && npm update -g npm
 
 # Yarn stuff
-RUN curl -o- -L https://yarnpkg.com/install.sh | bash
+RUN apt-get update && apt-get install -y apt-transport-https
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+RUN apt-get update && apt-get install -y yarn
 
 # Ruby testing stuff
 RUN gem install cucumber capybara selenium-webdriver rspec
