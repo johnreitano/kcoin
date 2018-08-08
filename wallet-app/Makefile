@@ -27,12 +27,12 @@ clean:
 	@rm -rf dist/
 	@rm -rf coverage/
 
-start: docker-install docker-start
+start: .docker-started docker-install docker-serve
 
 docker-install: .docker-started
 	@docker-compose exec $(DOCKER_NAME) make install
 
-docker-start: .docker-started
+docker-serve: .docker-started
 	@docker-compose exec $(DOCKER_NAME) make serve
 
 docker-build: .docker-started
