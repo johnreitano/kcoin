@@ -7,7 +7,7 @@ build:
 	@yarn run build
 
 serve:
-	@yarn run start:server
+	@yarn run start
 
 watch:
 	@yarn run start

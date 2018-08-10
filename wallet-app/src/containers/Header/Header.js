@@ -63,7 +63,7 @@ class Header extends React.Component {
 				position="static"
 				elevation={0}
 			>
-				<Toolbar disableGutters>
+				<Toolbar>
 					<div className={classes.leftIcon}>
 						{ leftButton &&
 						(	<Slide
@@ -83,7 +83,7 @@ class Header extends React.Component {
 					</div>
 					<div className={classes.rightIcon}>
 						{ !user.username && (
-							<Link to="/login">
+							<Link to="/login" className={classes.button}>
 								<Button
 									size="small"
 									id="trigger-icon"

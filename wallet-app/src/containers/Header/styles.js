@@ -32,6 +32,9 @@ const styles = (theme) => ({
 	rightIcon: {
 		flex: 1,
 		textAlign: "right"
+	},
+	button: {
+		textDecoration: "none"
 	}
 });
 
