@@ -1,7 +1,7 @@
 To see what copyrights are applied to each of our contract refer to specific license file.
 
 ## ENS License
-Files under the directory kcoin/client/contracts/truffle/contracts/kns are covered under the license described in the file ENS License [LICENSE.ENS](./LICENSE.ENS)
+Files under the directory kcoin/client/contracts/truffle/contracts/kns are covered under the license described in the file [LICENSE.ENS](./LICENSE.ENS)
 
 ## Kowala Smart Contract License
 Files under the directory kcoin/client/contracts/ with the exception of files under kcoin/client/contracts/truffle/contracts/kns are covered under the license described in the file [LICENSE.KOWALA-SMART_CONTRACTS](./LICENSE.KOWALA-SMART-CONTRACTS)
